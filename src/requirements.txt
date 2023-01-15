@@ -1,0 +1,6 @@
+numpy
+scipy
+Pillow
+moviepy
+opencv-python
+pyaudio
