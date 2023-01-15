@@ -465,10 +465,10 @@ def spkeydec(vfn, kf, passwd):
     for i in enckey:
         key+=chr(int(i)-int(strint(passwd)))
     open(kf,'w+').write(key)
-    cd(vfn,kf)
+    complete_decryption(vfn,kf)
     
 def spkeyenc(data, vfn, kf, passwd):
-    ce(data,vfn, kf)
+    complete_encryption(data,vfn, kf)
     vf = open(vfn,'ab')
     kf = open(kf,'r+')
     toadd = ""
@@ -476,7 +476,7 @@ def spkeyenc(data, vfn, kf, passwd):
         toadd+=u200d+str(ord(i)+strint(passwd))
     vf.write(toadd.encode())
     
-def ce(data, outvideo, keyf):
+def complete_encryption(data, outvideo, keyf):
     os.system(f'rm -rf {outvideo}')  # aynı isimde dosya varsa siler
     morse_data = text_to_morse(data)  # veriyi mors koduna çevirir
     morse2wavs(morse_data)  # mors kodunu wav dosyalarına çevirir
@@ -493,7 +493,7 @@ def tothread(n):
     write(filename=f'dirs/wavr/{n}'.replace('.png', '.wav'), data=ar, rate=44100)
 
 
-def cd(vid, keyf):
+def complete_decryption(vid, keyf):
     video2images(vid)
     dk = open(keyf, 'r').read()
     try:
@@ -577,13 +577,13 @@ if __name__ == "__main__":
         clear_dirs()
     if sys.argv[1] == "-c":
         clear_dirs()
-        ce(data, outVideo, kfname)
+        complete_encryption(data, outVideo, kfname)
     if sys.argv[1] == "-d":
-        cd(outVideo, kfname)
+        complete_decryption(outVideo, kfname)
     if sys.argv[1] == "-cd" or (sys.argv[1] == "-c" and sys.argv[2] == "-d"):
         clear_dirs()
-        ce(data, outVideo, kfname)
-        cd(outVideo, kfname)
+        complete_encryption(data, outVideo, kfname)
+        complete_decryption(outVideo, kfname)
     if sys.argv[1] == "-h" or sys.argv[1] == "--h" or sys.argv[1] == "--help" or sys.argv[1] == "-help":
         guide = open('guide.txt', 'r').read()
         print(guide)
