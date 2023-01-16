@@ -1,7 +1,7 @@
 from flask import Flask, render_template
-
 app = Flask(__name__)
-title = "KODLARIN SEYYAHI | SORU-CEVAP OYUNU"
+title = "KODLARIN SEYYAHI | SORU-CEVAP BONUSU"
+
 @app.route('/')
 def index():
     return render_template('index.html', TITLE=title)
