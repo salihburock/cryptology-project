@@ -6,6 +6,18 @@
   <link rel="stylesheet" href="/gui_static/css/form.css"/>
 </head>
 <body>
+  <div id="righter-side">
+    <button id="righter-btn"><img style="width: 45px; height: 45px;" src="http://192.168.12.192:8000/mini-bar.png"/></button>
+    
+    <button id="righter-btn"><img style="width: 45px; height: 45px;" src="http://192.168.12.192:8000/oda servisi.png"/></button>
+    
+    <button id="righter-btn"><img style="width: 45px; height: 45px;" src="http://192.168.12.192:8000/Odalar.png"/></button>
+    
+    <button id="righter-btn"><img style="width: 45px; height: 45px;" src="http://192.168.12.192:8000/ziyaretçiler.png"/></button>
+    
+    <button id="righter-btn"><img style="width: 45px; height: 45px;" src="http://192.168.12.192:8000/bilgiler.png"/></button>
+  
+  </div>
   <div class="login-box">
     <h2>{{project_name}} Kullanıcı Yönetim Sistemi</h2>
     <br>
@@ -43,11 +55,40 @@
     </form>
 </div>
 
+
+
+
+
+<div class="decrypt-box">
+  <h2>{{project_name}} Kullanıcı Bilgileri Yönetim Sistemi</h2>
+  <br>
+  <form action="/saveroom" method="POST" autocomplete="off">
+      <div class="user-box">
+        <input class="dmail" type="email" name="email" placeholder="Misafir E-mail" required="">
+      </div>
+      <a href="#">
+          <input style="height:45px; width:120px; border-radius: 9.5px;" type="submit" value="Bilgileri Deşifrele!"/>
+      </a>
+
+    </a>
+  </form>
+</div>
+
+
+
+
+
+
+
+
+
+
 <div class="emaillist" style="margin-left: 42rem; display: inline-block; overflow: scroll; width: 400px; height: 910px;">
   <h1><u>Kullanıcılar:</u></h1>
   <h1 id='elsst' style="text-align: center;">
     {{ elist }}
   </h1> 
+
 </div>
 </body>
 </html>

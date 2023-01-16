@@ -80,3 +80,21 @@ body {
 .right-side {
     padding-right: -10px;
 }
+#righter-side {
+    size: 100px;
+    position: absolute;
+    margin-left: 1200px;
+    padding-top: 100px;
+    padding: 24px;
+
+}
+
+#righter-btn {
+    display: flexbox;
+    justify-content: space-between;
+    margin-inline: 30px;
+}
+
+
+
+
