@@ -219,7 +219,6 @@ class Level:
 			
 	def check_win(self):
 		if pygame.sprite.spritecollide(self.player.sprite,self.goal,False):
-			self.create_overworld(self.current_level,self.new_max_level)
 			window = webview.create_window('game',LINK+'/', fullscreen=True)
 			webview.start()
 			time.sleep(15)
@@ -230,6 +229,8 @@ class Level:
 				open('qaresult.txt').write("1")
 			else:
 				open('qaresult.txt').write("0")
+			self.create_overworld(self.current_level,self.new_max_level)
+			
 			
 	def check_coin_collisions(self):
 		collided_coins = pygame.sprite.spritecollide(self.player.sprite,self.coin_sprites,True)

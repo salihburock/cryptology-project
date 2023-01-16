@@ -32,7 +32,7 @@ continue_btn.onclick = ()=>{
 }
 
 let timeValue =  10;
-let que_count = Math.floor(Math.random() * 14);
+let que_count = Math.floor(Math.random() * 17);
 let userScore = 0;
 let counter;
 let counterLine;
@@ -123,37 +123,24 @@ function optionSelected(answer){
         answer.insertAdjacentHTML("beforeend", '<div class="icon tick"><i class="fas fa-check"></i></div>'); //adding tick icon to correct selected option
         console.log("Correct Answer");
         console.log("Your correct answers = " + userScore);
-        (async () => {
-            const result = await fetch('/getstat', {
-                method: "POST",
-                body: JSON.stringify({
-                    "guess": 1
-                }),
-                headers: {
-                    "Content-Type": "application/json; charset=UTF-8"
-                    
-                }
-            })
-            const data = result.json();
-            return data;
-        })();
+        
     }else{
         answer.classList.add("incorrect"); //adding red color to correct selected option
         answer.insertAdjacentHTML("beforeend", '<div class="icon cross"><i class="fas fa-times"></i></div>'); //adding cross icon to correct selected option
         console.log("Wrong Answer");
-        (async () => {
-            const result = await fetch('/getstat', {
-                method: "POST",
-                body: JSON.stringify({
-                    "guess": 0
-                }),
-                headers: {
-                    "Content-Type": "application/json; charset=UTF-8"
-                }
-            })
-            const data = result.json();
-            return data;
-        })();
+        // (async () => {
+        //     const result = await fetch('http://localhost:8899/getstat', {
+        //         method: "POST",
+        //         body: JSON.stringify({
+        //             "guess": 0
+        //         }),
+        //         headers: {
+        //             "Content-Type": "application/json; charset=UTF-8"
+        //         }
+        //     })
+        //     const data = result.json();
+        //     return data;
+        // })();
 
         for(i=0; i < allOptions; i++){
             if(option_list.children[i].textContent == correcAns){ //if there is an option which is matched to an array answer 

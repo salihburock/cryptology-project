@@ -187,4 +187,28 @@ let questions = [
       "E)Parola sahibi hiçbir şekilde yasal yaptırıma maruz kalamaz.",
     ],
   },
+  {
+    numb: 16,
+    question: "Otellerde  pasaport numaraları ve banka kartı bilgileri dahil olmak üzere toplam ne kadar kişinin konuk verileri çalınmıştır?",
+    answer: "E)383 milyon",
+    options: [
+      "A)42 milyon",
+      "B)73 milyon",
+      "C)187 milyon",
+      "D)294 milyon",
+      "E)383 milyon",
+    ]
+  },
+  {
+    numb: 17,
+    question: "2. Kodların Seyyahı Algoritması’nı diğer algoritmalardan daha güçlü ve güvenilir yapan anahtarın içerdiği karakter çeşidi sayısı kaçtır?",
+    answer: "E)1.114.111",
+    options: [
+      "A)134.712",
+      "B)327.816",
+      "C)512.934",
+      "D)761.064",
+      "E)1.114.111"
+    ]
+  }
 ];

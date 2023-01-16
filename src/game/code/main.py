@@ -5,6 +5,7 @@ from overworld import Overworld
 from ui import UI
 import threading
 
+project_name = "KODLARIN SEYYAHI"
 
 class Game:
 	def __init__(self):
@@ -69,15 +70,17 @@ class Game:
 
 # Pygame setup
 pygame.init()
+pygame.display.set_caption(f"{project_name}")
 screen = pygame.display.set_mode((screen_width,screen_height))
 clock = pygame.time.Clock()
 game = Game()
 def check_qa():
-	data = open('qaresult.txt','r').read()
-	if data == "1":
-		game.change_health(+20)
-	else:
-		game.change_health(-20)
+	while True:
+		data = open('qaresult.txt','r').read()
+		if data == "1":
+			game.change_health(+20)
+		else:
+			game.change_health(-20)
 qathread = threading.Thread(target=check_qa)
 
 while True:
@@ -89,8 +92,6 @@ while True:
 	screen.fill('grey')
 	game.run()
 	
-	if not qathread.is_alive():
-		qathread.start()
 	
 
 	pygame.display.update()
