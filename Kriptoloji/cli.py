@@ -498,6 +498,8 @@ def complete_encryption(data, outvideo, keyf):
     encryptkeyfile(keyf, data)  # anahtar dosyasını şifreler
     print('\nEncrypted Key File:')
     os.system(f'cat {keyf}')
+    
+    return (outvideo, open(keyf,'r').read())
 
 
 def tothread(n):
@@ -582,7 +584,7 @@ def complete_decryption(vid, keyf):
         ud += str(ord(i)-10000)
     print(ud)
     print(changeul(o, decompbin(str((ud)))))
-
+    return changeul(o, decompbin(str((ud))))
 
 if __name__ == "__main__":
     config = json.load(open('config.json', 'r'))

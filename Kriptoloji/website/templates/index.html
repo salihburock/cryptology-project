@@ -1,4 +1,73 @@
 <!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
 
-<button>Şifreleme</button>
-<button>Şifreleme</button>
+
+.sidebtn {
+    font-size: 40px;
+    height: 890px;
+    width: 944px;
+    background: transparent;
+}
+
+.sidebtn:hover {
+    color: green
+}
+
+
+img {
+    --s: 250px;   /* the size of the image */
+    --b: 8px;     /* the border thickness*/
+    --g: 14px;    /* the gap */
+    --c: #4ECDC4; /* the color */
+    
+    width: var(--s);
+    aspect-ratio: 1;
+    outline: calc(var(--s)/2) solid #0009;
+    outline-offset: calc(var(--s)/-2);
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  img:hover {
+    outline: var(--b) solid var(--c);
+    outline-offset: var(--g);
+  }
+  
+  img + img {
+    border-radius: 50%;
+  }
+  
+  
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 50px;
+    place-content: center;
+    place-items: center;
+    background: #C8C8A9;
+  }
+
+img + img {
+    side: 200%;
+}
+
+</style>
+</head>
+<body>
+    <div>
+        <a href='/sifreleme'>
+        <img src="https://picsum.photos/id/1016/300/300" alt="Şifreleme" style="--g: 20px;--b:5px;--c:#D95B43;">
+        </a>
+        <a href='/sifreleme'>
+        <img src="https://picsum.photos/id/1015/300/300" alt="Deşifrleme" style="--g: 20px;--b:5px;--c:#D95B43;">
+        </a>
+    </div>
+</body>
+</html>
