@@ -439,7 +439,6 @@ def setkey(key, keyf):
 def encryptkeyfile(keyf, val):
     k = open(keyf, 'r')
     key = k.read()
-    print(key)
     key = encryptkey(key)
     k = open(keyf, 'w')
     k.write(key+'\n'+encryptul(parseul(str(int(compbin(saveul(val)))))))
