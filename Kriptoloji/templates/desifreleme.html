@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<a href="/"><button>Geri dön!</button></a>
+<a href="/"><button style="background-color: #0ccf00;">&larr; Geri dön!</button></a>
 <form method="post" action="/upload">
   <h1 style="text-align: center;">Deşifreleme</h1>
   <br>
@@ -12,10 +12,11 @@
     <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Video ekle</button>
 
     <div class="image-upload-wrap">
-      <input class="file-upload-input" id="fileupload" type='file' onchange="readURL(this);" accept="image/*" />
-      <div class="drag-text" style="color: #000; background: rgba(120,255,120,210);">
+      <input class="file-upload-input" id="fileupload" type='file' onchange="readURL(this);" accept="video/mp4,.key" />
+      <div class="drag-text"  style="color: #000; background: rgba(120,255,120,210);">
         <h3>Dosyanızı yüklemek için sürükleyip bırakın</h3>
       </div>
+      <button class="file-upload-input" type="submit"></button>
     </div>
     <div class="file-upload-content">
       <img class="file-upload-image" src="#" alt="your image" />

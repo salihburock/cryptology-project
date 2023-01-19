@@ -19,20 +19,29 @@ def index():
 
 @app.route('/desifreleme')
 def decrypt():
-    return render_template('decrypt.hmtl', project_name=proj_name)
+    return render_template('desifreleme.html', project_name=proj_name)
+
+
+@app.route('/api')
+def api():
+    inputx = request.args.get('input')
+    complete_encryption(inputx,'static/data/'+request.remote_addr+'.mp4','static/data/'+request.remote_addr+'.key')
+    if os.path.exists(request.remote_addr+'.mp4'):
+        return render_template('template.html')
+    else:
+        return render_template('trysgain.html')
 
 @app.route('/sifreleme')
 def encrypt():
-    return render_template('encrypt.hmtl', project_name=proj_name)
+    return render_template('sifreleme.html', project_name=proj_name)
 
 @app.route('/uploadtxt', methods=["POST"])
 def uploadtxt():
     if request.method == "POST":
         metin = request.form["metin"]
-        open('../toEncrypt.txt', 'w+').write(metin)
-        video_path, keyfile_data = complete_encryption("../toEncrypt.txt", "ftest.mp4", "ftest.key")
+        open('toEncrypt.txt', 'w+').write(metin)
+        video_path, keyfile_data = complete_encryption("toEncrypt.txt", "ftest.mp4", "ftest.key")
         time.sleep(2)
-        return render_template('sonucsifreleme.html', keyfile_data = keyfile_data, video_path = video_path)
     else:
         time.sleep(0.5)
         return redirect('/error')
@@ -50,7 +59,7 @@ def upload():
             dosya2.save('./static/data/'+dosya_adi2+'.key')
         
         sonuc = complete_decryption('./static/data/'+dosya_adi+'.mp4', './static/data/'+dosya_adi2+'.key')
-        return render_template('sonucdesifreleme.html', sonuc=sonuc)
+        return render_template('sonuc_desifreleme.html', sonuc=sonuc, project_name=proj_name)
     else:
         return redirect('/error')
     
