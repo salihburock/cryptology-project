@@ -555,7 +555,7 @@ def complete_decryption(vid, keyf):
     print(f'\nwavr:')
     os.system('ls dirs/wavr')
     md = decodewavs('dirs/wavr')
-    # md.append(md[-1][:1])
+    #md.append(md[-1][:1])
     s = ""
     o = ""
     o2 = []

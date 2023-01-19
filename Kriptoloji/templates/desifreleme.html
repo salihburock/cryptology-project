@@ -1,34 +1,76 @@
-<!DOCTYPE html>
-
+<html>
 <head>
-  <link rel="stylesheet" href="/static/css/style.css">
+    <title>Deşifreleme</title>
+    <style>
+    input{
+      display: block;
+      
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10px;
+    }
+    label + label {
+      margin-top: 5px
+      
+    }
+    label {
+      background-color: blue;
+      color: white;
+      width: 170px;
+      padding: 0.5rem;
+      font-family: sans-serif;
+      border-radius: 0.3rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 400px;
+    }#btn {
+      margin-left: 920px;
+    }
+    #actual-btn2 {
+  } 
+  #actual-btn {
+  } 
+  form {
+    padding: 100px;
+    border: 1px solid black;
+    background-color: #fff;
+    border-radius: 2.5px;
+  }
+  input {
+    position: absolute;
+    top: 10px;
+  }
+  body {
+    font-size: 30px;
+  }
+    </style>
 </head>
-<script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<a href="/"><button style="background-color: #0ccf00;">&larr; Geri dön!</button></a>
-<form method="post" action="/upload">
-  <h1 style="text-align: center;">Deşifreleme</h1>
-  <br>
-  <div class="file-upload">
-    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Video ekle</button>
+<body>
+    <form action = "/upload" method="POST" enctype="multipart/form-data">
+      <input onchange="getVideoFileName(this);" style="display: none;" name="dosya1" type="file" id="actual-btn" required=""/>
+      <input onchange="getKeyFileName(this);" style="display: none;" name="dosya2" type="file" id="actual-btn2" requied=""/>
 
-    <div class="image-upload-wrap">
-      <input class="file-upload-input" id="fileupload" type='file' onchange="readURL(this);" accept="video/mp4,.key" />
-      <div class="drag-text"  style="color: #000; background: rgba(120,255,120,210);">
-        <h3>Dosyanızı yüklemek için sürükleyip bırakın</h3>
+      <label style="with: 250px; text-align: center; border: 5px solid white;" for="actual-btn">Video Dosyası Seç</label>
+      <label style="with: 250px; text-align: center; border: 5px solid white;" for="actual-btn2">Anahtar Dosyası Seç</label>
+      <div style="text-align:center;">
+        <h1 id="filenamee"></h1>
+        <h1 id="keynamee"></h1>
       </div>
-      <button class="file-upload-input" type="submit"></button>
-    </div>
-    <div class="file-upload-content">
-      <img class="file-upload-image" src="#" alt="your image" />
-      <div class="image-title-wrap">
-        <button type="button" onclick="removeUpload()" class="remove-image">Sil: <span class="image-title">Uploaded Image</span></button>
-      </div>
-    </div>
-    <div>
-      <progress id="progressBar" value="0" max="100" style="width:300px;"></progress>
-      <h3 id="status"></h3>
-      <p id="loaded_n_total"></p>  
-    </div>
-  </div>
-</form>
-<script src="/static/js/decrypt.js"></script>
+      <input style="position:absolute; left: 0%; border: 1px solid black; color: #fff; font-size: 20px; border-radius: 10px; background-color: #000ff0;" id='btn' type = "submit" value="Upload">
+    </form>
+
+<script>
+  function getVideoFileName(myfile){
+    let filename = myfile.files[0].name;
+    document.getElementById("filenamee").textContent = "Seçtiğin video dosyası: "+ filename;
+  }
+  function getKeyFileName(myfile){
+    let filename = myfile.files[0].name;
+    document.getElementById("keynamee").textContent =  "Seçtiğin anahtar dosyası: "+filename;
+  }
+</script>
+</body>
+</html>

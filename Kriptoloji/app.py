@@ -25,7 +25,7 @@ def decrypt():
 @app.route('/api')
 def api():
     inputx = request.args.get('input')
-    complete_encryption(inputx,'static/data/'+request.remote_addr+'.mp4','static/data/'+request.remote_addr+'.key')
+    #complete_encryption(inputx,'static/data/'+request.remote_addr+'.mp4','static/data/'+request.remote_addr+'.key')
     if os.path.exists(request.remote_addr+'.mp4'):
         return render_template('template.html')
     else:
@@ -45,23 +45,22 @@ def uploadtxt():
     else:
         time.sleep(0.5)
         return redirect('/error')
-    
 @app.route('/upload', methods=["POST"])
-def upload():
+def upload():   
     if request.method == "POST":
-        dosya = request.files['dosya1']
-        dosya2 = request.files['dosya2']
-        dosya_adi = dosya.filename
-        dosya_adi2 = dosya2.filename
-        if allowed_file(dosya_adi):
-            dosya.save('./static/data/'+dosya_adi+'.mp4')
-        if allowed_file(dosya_adi2):
-            dosya2.save('./static/data/'+dosya_adi2+'.key')
-        
-        sonuc = complete_decryption('./static/data/'+dosya_adi+'.mp4', './static/data/'+dosya_adi2+'.key')
-        return render_template('sonuc_desifreleme.html', sonuc=sonuc, project_name=proj_name)
+       dosya = request.files['dosya1']
+       dosya2 = request.files['dosya2']
+       dosya_adi = dosya.filename
+       dosya_adi2 = dosya2.filename
+       if allowed_file(dosya_adi):
+           dosya.save('./static/data/'+dosya_adi)
+       if allowed_file(dosya_adi2):
+           dosya2.save('./static/data/'+dosya_adi2)
+       #sonuc = complete_decryption('127.0.0.1.mp4', '127.0.0.1.key')
+       os.system('python cli.py -d')
+       return render_template('sonuc_desifreleme.html', project_name=proj_name)
     else:
-        return redirect('/error')
+       return redirect('/error')
     
 @app.route('/error')
 def error():
