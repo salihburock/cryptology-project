@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>{{project_name}}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-
 
 .sidebtn {
     font-size: 40px;
@@ -38,8 +40,9 @@ img {
     outline-offset: var(--g);
   }
   
-  img + img {
-    border-radius: 50%;
+  img {
+    border-radius: 10%;
+    margin: 5px 0px 5px 0px;
   }
   
   
@@ -51,10 +54,10 @@ img {
     gap: 50px;
     place-content: center;
     place-items: center;
-    background: #C8C8A9;
+    background-image: url("/static/anasayfa-bg.jpeg")
   }
 
-img + img {
+img {
     side: 200%;
 }
 
@@ -63,10 +66,10 @@ img + img {
 <body>
     <div>
         <a href='/sifreleme'>
-        <img src="/static/sifreleme.jpeg" alt="Şifreleme" style="--g: 20px;--b:5px;--c:#D95B43;">
+        <img src="/static/sifreleme.jpeg" alt="Şifreleme" style="--g: 20px;--b:5px;--c:#01438a;">
         </a>
         <a href='/desifreleme'>
-        <img src="/static/desifreleme.jpeg" alt="Deşifrleme" style="--g: 20px;--b:5px;--c:#D95B43;">
+        <img src="/static/desifreleme.jpeg" alt="Deşifrleme" style="--g: 20px;--b:5px;--c:#01438a;">
         </a>
     </div>
 </body>

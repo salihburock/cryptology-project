@@ -1,5 +1,5 @@
 <head>
-    <title>{{project_name}}</title>
+    <title>ŞİFRELEME | {{project_name}}</title>
     <style>
         input {
             display: block;
@@ -9,13 +9,27 @@
         form {
             margin-top: 500px;
         }
-    </style>
-</head>
-<body>
-    <form method="POST" action='uploadtxt'>
-        <input type="text" name="metin">
-        <input type="submit">
-    </form>
-    
 
+        body {
+            background-image: url("/static/sifreleme-bg.jpeg") !important;
+        }
+    </style>
+    <link rel="stylesheet" href="/static/css/sifreleme.css"/>
+</head>
+<body style="font-family: monospace !important;">
+<form method="POST" id="sifreleme" action='/uploadtxt' style="margin-top: -750px;">
+
+<div class="container">
+    <span><a href="/">Geri dön</a></span>
+    <div class="demo-flex-spacer"></div>
+  
+    <div class="webflow-style-input">
+      <input style="border-radius: 100%% !important;" type="text" name="metin" placeholder="Şifrelenecek metini giriniz."></input>
+      <button type="submit"><i class="icon ion-android-arrow-forward"></i></button>
+    </div>
+  
+  </div>
+</form>
+
+<script src="/static/js/sifreleme.js"></script>
 </body>

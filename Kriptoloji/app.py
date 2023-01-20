@@ -4,7 +4,7 @@ from cli import *
 import time
 
 app = Flask(__name__)
-proj_name = "ROSETTA"
+proj_name = "Rosetta’dan İnternet Çağına: Piksellerin Sonatı"
 
 ALLOWED_EXTENSIONS = {'mp4', 'key'}
 ERR_CODES = [400, 401, 403, 404, 500, 502, 503, 504]
