@@ -1,4 +1,4 @@
-funcs.py - Kriptoloji Projesi Ana Çalıştırılabiliri
+cli.py - Kriptoloji Projesi Ana Çalıştırılabiliri
 
 --{h|help} veya -{h|help}:
     Yardım seçeneğini yazdırır (bu yazı).
