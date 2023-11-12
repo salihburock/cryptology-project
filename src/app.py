@@ -24,12 +24,12 @@ def index():
     else:
         return render_template('trysgain.html')
 
-if __name__ == '__main__':
+if __name__ != '__main__':
     consts = Constants()
     webview.create_window(f'{consts.title}', app, fullscreen=True)
-    webview.start()
+    #webview.start()
     #webview.start(debug=True)
 
-'''if __name__ == "__main__":
+if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8081, debug=1)
-'''
+

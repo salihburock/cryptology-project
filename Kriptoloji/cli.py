@@ -37,10 +37,10 @@ morse_dict = {
 }
 
 
-f = open('d.txt','w')
 o = ""
 d = {}
 rd = {}
+exwaves = np.array([])
 additions = ['ı','ğ','ü','ş','ö','ç','Ğ','Ü','Ş','Ö','Ç','İ']
 for i in range(33,127):
     d[str(i-32)] = chr(i)
@@ -175,6 +175,7 @@ def wve2rgb(ln):
     n1 = ln // 256 // 256 % 256
     n2 = ln // 256 % 256
     n3 = ln % 256
+    np.append(exwaves, np.array([n1, n2, n3]))
     return np.array([n1, n2, n3])
 
 
@@ -193,8 +194,12 @@ def find_shape_difference(inp):
 
 def arr2image(arr):
     fsd = find_shape_difference(arr)
-    s = np.random.choice(255, 3)
-    new_array = np.append(arr, ([255, 0, 0]*int(fsd[0])))
+    #s = np.random.choice(255, 3)
+    new_array = np.append(arr, list(np.random.choice(255,3))*int(fsd[0]))
+    #new_array = np.append(arr, (244,11,255)*int(fsd[0]))
+    #new_array = np.array(arr)
+    #for i in range(int(fsd[0])):
+    #    new_array = np.append(new_array, wve2rgb((exwaves[i])).flatten())
     new_array = new_array.reshape(fsd[1], fsd[1], 3)
     return new_array
 
@@ -321,9 +326,17 @@ def resizeimgs(folder):
         key[list.index(i)] += str(str(s[0])+str(np.random.randint(10))+str(s[1]))
         k = 300
         ta = k**2-s[1]**2
+        #print(ar)
+        aar = []
+        #print(len(aar),len(ar), ta)
+        for _ in range(ta):
+            aar.append(ar[np.random.randint(len(ar)-1)][np.random.randint(len(ar)-1)].flatten())
+            #print(len(ar), ar.shape)
         ar = ar.flatten()
+
         sa = np.array([])
-        sa = np.append(sa, tuple(np.random.choice(255, 3*(ta))))
+        sa = np.append(sa, aar)#tuple(np.random.choice(255, 3*(ta))))
+        #print("------" ,3*(ta), np.array(aar)[3], len(tuple(np.random.choice(255, 3*(ta)))))
         # ar = np.append(ar, [0]*ta*3)
         ar = np.append(ar, sa)
         ar = np.array(ar, dtype=np.uint8)
@@ -419,6 +432,7 @@ def decryptkey(key):
 
 
 def setkey(key, keyf):
+    #print(key)
     r = ""
     for i in key:
         r += i+'\u200d'
@@ -477,25 +491,25 @@ def spkeyenc(data, vfn, kf, passwd):
     vf.write(toadd.encode())
     
 def complete_encryption(data, outvideo, keyf):
-    print('Şifreleme\n')
-    os.system(f'rm -rf {outvideo}')  # aynı isimde dosya varsa siler
-    morse_data = text_to_morse(data)  # veriyi mors koduna çevirir
+    print('Encryption\n')
+    os.system(f'rm -rf {outvideo}')     # Deletes the file with the same name
+    morse_data = text_to_morse(data)    # Transformes the data to morse code
     print(saveul(data))
     print(compbin(saveul(data)))
     print(morse_data)
-    morse2wavs(morse_data)
+    morse2wavs(morse_data)  # Saves the morse codes as audio files
     print('\nwavs:')
-    os.system('ls dirs/wavs')  # mors kodunu wav dosyalarına çevirir
-    wavs2img('dirs/wavs')
+    os.system('ls dirs/wavs')  
+    wavs2img('dirs/wavs')   
     print('\nimgs:')
-    os.system('ls dirs/imgs')  # mors kodunu wav dosyalarına çevirir  # wav dosyalarını resme çevirir
-    resizeimgs('dirs/imgs')# resimleri eşit boyda olmak üzere yeniden boyutlandırır
+    os.system('ls dirs/imgs') 
+    resizeimgs('dirs/imgs')     # Resizes the images to same resolution
     print('\nimgs2:')
-    os.system('ls dirs/imgs2')  # mors kodunu wav dosyalarına çevirir
-    # unitedwavs('wavs')  # wav dosyalarını birleştirir
-    frames2video('dirs/imgs2', outvideo)# resimleri ardı ardına koyarak video oluşturur
-    setkey(key, keyf)  # videoyu çözmek için gerekli olan anahtarı oluşturur
-    encryptkeyfile(keyf, data)  # anahtar dosyasını şifreler
+    os.system('ls dirs/imgs2')
+    # unitedwavs('wavs')  # Collects the audio files in one fie (optional)
+    frames2video('dirs/imgs2', outvideo)    # Creates a video by putting the images frame by frame
+    setkey(key, keyf)  # Generates the key necessary for encryption
+    encryptkeyfile(keyf, data)  # Encrypts the key file based on Unicode 
     print('\nEncrypted Key File:')
     os.system(f'cat {keyf}')
     
@@ -508,7 +522,7 @@ def tothread(n):
 
 
 def complete_decryption(vid, keyf):
-    print('\n\nDeşifreleme\n    ')
+    print('\n\nDecryption\n    ')
     video2images(vid)
     print(f'\nframesr:')
     os.system('ls dirs/framesr')
@@ -518,7 +532,7 @@ def complete_decryption(vid, keyf):
         print(f'\nimgsr:')
         os.system('ls dirs/imgsr')
     except ValueError:
-        raise SystemExit("Girdiğin anahtar yanlış!")
+        raise SystemExit("The key is not valid!")
     imgdir = natsorted(os.listdir('dirs/imgsr'))
     def w3thread():
         global pool
@@ -594,7 +608,7 @@ if __name__ == "__main__":
     data = open(ifname, 'r').read()
     outVideo = ofname
     if len(sys.argv) == 1:
-        raise SystemExit("Argüman belirtmeniz gerekli")
+        raise SystemExit("You must specify the arguments")
     if sys.argv[1] == "--clear":
         clear_dirs()
     if sys.argv[1] == "-c":
@@ -616,3 +630,4 @@ if __name__ == "__main__":
         p = input('password: ')
         spkeydec(outVideo, kfname, p)
     
+

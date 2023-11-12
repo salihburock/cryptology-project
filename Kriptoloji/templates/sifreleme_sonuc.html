@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>Şifreleme</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    a button {
+      position: absolute;
+      top: 2.5%;
+      left: 2.5%;
+      background-color: #2ffa;
+      border-radius: 10%;
+      border: 1px solid black;
+      color: #fff;
+    }
+    #myVideo {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%; 
+      min-height: 100%;
+    }
+
+    #bilgi {
+      background-color: #fff; 
+      color: #000;
+      position: fixed;
+      left: 250% !important;
+      border: 1px solid #000;
+      box-shadow: 5px 0 5px 0 rgba(255,255,255, 1);
+      padding: 0.75rem;
+      margin-bottom: 10px;
+      text-align: center;
+      font-size: 20px;
+    }
+  </style>
+</head>
+
+
+<body>
+  <video style="z-index: -1;" autoplay muted loop id="myVideo">
+    <source src="{{bgvurl}}" type="video/mp4">
+    Tarayıcınız video oynatmayı desteklememektedir.
+  </video>
+  <a href="/"><button style="color: #000; background-color: #0cffff; cursor:pointer;">&larr; Geri dön!</button></a>
+  <p style="font-size: 71px; font-weight: bold; padding-left: 30px; padding-right: 30px"></p>
+  <a id="bilgi" style="position: absolute; left: 35px; width: 500px;" href='/static/data/anahtar.key' download="anahtar.key">Anahtar(<i class="fa-solid fa-key"></i>) dosyasını indirmek için tıklayınız! <i class="fa-solid fa-download"></i></a>  <video width="100%" height="900" controls style="padding-left: 30px; padding-right: 30px; padding-top: 20px; ">
+    <source src="/static/data/sifrelenmis_veri.mp4" type="video/mp4">
+    Tarayıcınız video oynatmayı desteklememektedir.
+  </video>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<head>
+    <title>DEŞİFRELEME | {{project_name}}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+  
+      body {
+        background-image: url("https://public.bn.files.1drv.com/y4maLuvKi3lRTk2RComSC5czgMQg4KCjMGpvg8T5jykZMSYCW93w6UwrBBxbFlDp3oGBBSDesm4bsTKWN523IJE-6NeN0_QQziic-ShPQKtBjNsK1a8BCGAXy0D7Giz3B-6-OGMpFjnzcFK1NaVj2DfPY9FTY8Vsg1mhDbeDxljfe9_myA7Qhryz6bZmq8QwjHXE2JyXCc8I-AucuMiWBdpvWuq47NDC99dGQENUAsgXqc") !important;
+    }
+    #myVideo {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%; 
+        min-height: 100%;
+      }
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+  
+  * { 
+    margin: 0;
+    padding: 0;
+  
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .container {
+    height: 100vh;
+    width: 100%;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+  }
+  
+  .card {
+    border:none;
+    background: -webkit-linear-gradient(90deg, rgb(50, 50, 50), #165594, rgb(20, 0, 120));
+    /* background: linear-gradient(90deg, rgb(50, 50, 50), #165594, rgb(20, 0, 120)); */
+    border-radius: 5%;
+    z-index:0;
+    padding:5px;
+    width: 600px;
+    height: 260px;
+    background: linear-gradient(90deg, #707f91, #011fa6, rgb(20, 0, 120));  
+    padding: 10px 30px 40px;
+  }
+  
+  .card h3 {
+    font-size: 22px;
+    font-weight: 600;
+    
+  }
+  
+  .drop_box {
+    margin: 10px 0;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 3px dotted #a3a3a3;
+    border-radius: 5px;
+  }
+  
+  .drop_box h4 {
+    font-size: 16px;
+    font-weight: 400;
+    color: #2e2e2e;
+  }
+  
+  .drop_box p {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 12px;
+    color: #a3a3a3;
+  }
+  
+  .btn {
+    text-decoration: none;
+    background-color: #005af0;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    transition: 0.3s;
+  }
+  
+  .btn:hover{
+    text-decoration: none;
+    background-color: #ffffff;
+    color: #000aff;
+    padding: 10px 20px;
+    border: none;
+    outline: 1px solid #010101;
+  }
+  .form input {
+    margin: 10px 0;
+    width: 100%;
+    background-color: #e2e2e2;
+    border: none;
+    outline: none;
+    padding: 12px 20px;
+    border-radius: 4px;
+  }
+  
+    </style>
+  </head>
+  <video style="z-index: -1;" autoplay muted loop id="myVideo">
+    <source src="/static/bg.mp4" type="video/mp4">
+    Tarayıcınız HTML5 desteklememektedir.
+  </video>
+  <div class="container">
+    <div class="card">
+        <header>
+        </header>
+      </div>
+  
+    </div>
+  </div>
+  

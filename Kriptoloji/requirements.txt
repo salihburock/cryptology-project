@@ -5,3 +5,4 @@ Pillow
 moviepy
 opencv-python
 pyaudio
+natsort

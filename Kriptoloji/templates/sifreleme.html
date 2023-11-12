@@ -1,35 +1,33 @@
 <head>
     <title>ŞİFRELEME | {{project_name}}</title>
-    <style>
-        input {
-            display: block;
-            margin-right: auto;
-            margin-left: auto;
-        }
-        form {
-            margin-top: 500px;
-        }
-
-        body {
-            background-image: url("/static/sifreleme-bg.jpeg") !important;
-        }
-    </style>
     <link rel="stylesheet" href="/static/css/sifreleme.css"/>
 </head>
 <body style="font-family: monospace !important;">
-<form method="POST" id="sifreleme" action='/uploadtxt' style="margin-top: -750px;">
+<video autoplay muted loop id="myVideo" src="{{bgvurl}}">
+    Tarayıcınız HTML5 desteklememektedir.
+</video>
 
-<div class="container">
-    <span><a href="/">Geri dön</a></span>
-    <div class="demo-flex-spacer"></div>
-  
-    <div class="webflow-style-input">
-      <input style="border-radius: 100%% !important;" type="text" name="metin" placeholder="Şifrelenecek metini giriniz."></input>
-      <button type="submit"><i class="icon ion-android-arrow-forward"></i></button>
-    </div>
-  
-  </div>
-</form>
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<div class="form__group">
+  <form method="POST"> 
+    <textarea class="form__input" placeholder="Text to encrypt" name="textarea" style="
+    width: 450.891;
+  "></textarea> 
+    <input onclick='handleSubmit()'  id="buton"  type="submit" value="Submit" style="position: relative;"> 
+  </form>
+</div>
+<div id="results">
+    
+  <video style="width: 1575; height: 400px; position: relative;align-self: auto; " id='sonucvideo' controls>
+    <source src="/static/ftest.mp4" type="video/mp4"/></video>
+
+    <a style="font-size: 18px;height: 10%; width: 1580; position: fixed; margin-top:400px;"
+    href='/static/ftest.key' id='bilgi'>ᵺ〆ᮙ剤⿏⿖⾽剉⇲ᾌ↵刿ᮣ刭⿴剜〉剞⤥⿪别⿙ᶖ⾻⿯ᾄ⿴ᾂ刣⿡刳─⿫刯Ⓠ⿠⿐、⾹⇂剒⇟┈削⿑ⓐ⾽⤺⾵⿭剟⾿᭱⿖⤜⿯⿱刧⿰⿔Ὃ↥⿈↲ᶐ⿉ᮐ刣⿥⿌⿗剛↱ᾏ⇕剣᮲剚⿆刲⿆剀⤢⾼剢⾴ᶇ⿘⾺ὠ⾳Ὕ别⾽剢⓱⾴刚Ⓝ、⿥⾶⿑⇜剎⇰⓷剚⾼⓪⿾⤔　⿺剂⿏᭷⿹⤧⿢⿂刳⾺⿠ᾚ↬⿇⇋]
+    𓸗
+    <span class="ahovert">Anahtar dosyasını yüklemek için tıklayın.</span>
+    </a>
+
+</div>
 
 <script src="/static/js/sifreleme.js"></script>
 </body>

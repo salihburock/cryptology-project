@@ -1,4 +1,4 @@
-{
+    {
     "fileToEncrypt": "toEncrypt.txt",
     "keyFile": "ftest.key",
     "outVideoFile": "ftest.mp4"

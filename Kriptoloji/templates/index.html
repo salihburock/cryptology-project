@@ -3,6 +3,7 @@
 <head>
   <title>{{project_name}}</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <style>
 * {
   box-sizing: border-box;
@@ -23,14 +24,14 @@
 
 
 img {
-    --s: 250px;   /* the size of the image */
-    --b: 8px;     /* the border thickness*/
-    --g: 14px;    /* the gap */
+    --s: 200px;   /* the size of the image */
+    --b: 38px;     /* the border thickness*/
+    --g: 8px;    /* the gap */
     --c: #4ECDC4; /* the color */
     
     width: var(--s);
     aspect-ratio: 1;
-    outline: calc(var(--s)/2) solid #0009;
+    outline: calc(var(--s)/2) solid #0006;
     outline-offset: calc(var(--s)/-2);
     cursor: pointer;
     transition: 0.3s;
@@ -45,7 +46,9 @@ img {
     margin: 5px 0px 5px 0px;
   }
   
-  
+  a {
+    display: transparent;
+  }
   body {
     margin: 0;
     min-height: 100vh;
@@ -54,23 +57,44 @@ img {
     gap: 50px;
     place-content: center;
     place-items: center;
-    background-image: url("/static/anasayfa-bg.jpeg")
   }
 
 img {
     side: 200%;
 }
-
+#myVideo {
+  position: fixed;
+  right: -600px;
+  bottom: -120;
+  min-width: 100%; 
+  min-height: 100%;
+  z-index: -1;
+}
+.rsmbtn {
+  height: 200px;
+  width: 500px
+}
 </style>
 </head>
 <body>
+<video autoplay muted loop id="myVideo">
+  <source src="{{bgvurl}}" type="video/mp4">
+    Tarayıcınız HTML5 desteklememektedir.
+</video>
     <div>
         <a href='/sifreleme'>
-        <img src="/static/sifreleme.jpeg" alt="Şifreleme" style="--g: 20px;--b:5px;--c:#01438a;">
+        <img class="rsmbtn" src="/static/şifreleme.jpeg" alt="Şifreleme" style="--g: 20px;--b:5px;--c:#01438a;">
         </a>
+        <p1>_____</p1>
         <a href='/desifreleme'>
-        <img src="/static/desifreleme.jpeg" alt="Deşifrleme" style="--g: 20px;--b:5px;--c:#01438a;">
+        <img class="rsmbtn" src="/static/Deşifrlee.jpeg" alt="Deşifrleme" style="--g: 20px;--b:5px;--c:#01438a;">
         </a>
+        
+        
+
     </div>
 </body>
+<script>
+  document.getElementById('myVideo').playbackRate=1.5
+</script>
 </html>

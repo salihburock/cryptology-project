@@ -1,76 +1,181 @@
-<html>
 <head>
-    <title>DEŞİFRELEME | {{project_name}}</title>
-    <style>
-    input{
-      display: block;
-      
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 10px;
-    }
-    label + label {
-      margin-top: 5px
-      
-    }
-    label {
-      background-color: blue;
-      color: white;
-      width: 170px;
-      padding: 0.5rem;
-      font-family: sans-serif;
-      border-radius: 0.3rem;
-      cursor: pointer;
-      margin-top: 1rem;
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 400px;
-    }#btn {
-      margin-left: 920px;
-    }
-    #actual-btn2 {
-  } 
-  #actual-btn {
-  } 
-  form {
-    padding: 100px;
-    border: 1px solid black;
-    background-color: #fff;
-    border-radius: 2.5px;
-  }
-  input {
-    position: absolute;
-    top: 10px;
-  }
-  body {
-    font-size: 30px;
-  }
-    </style>
-</head>
-<body>
-    <form action = "/upload" method="POST" enctype="multipart/form-data">
-      <input onchange="getVideoFileName(this);" style="display: none;" name="dosya1" type="file" id="actual-btn" required=""/>
-      <input onchange="getKeyFileName(this);" style="display: none;" name="dosya2" type="file" id="actual-btn2" requied=""/>
+  <title>DEŞİFRELEME | {{project_name}}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
 
-      <label style="with: 250px; text-align: center; border: 5px solid white;" for="actual-btn">Video Dosyası Seç</label>
-      <label style="with: 250px; text-align: center; border: 5px solid white;" for="actual-btn2">Anahtar Dosyası Seç</label>
-      <div style="text-align:center;">
-        <h1 id="filenamee"></h1>
-        <h1 id="keynamee"></h1>
-      </div>
-      <input style="position:absolute; left: 0%; border: 1px solid black; color: #fff; font-size: 20px; border-radius: 10px; background-color: #000ff0;" id='btn' type = "submit" value="Upload">
-    </form>
+    body {
+      background-image: url({{bgvurl}}) !important;
+  }
+  #myVideo {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%; 
+      min-height: 100%;
+    }
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* { 
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.card {
+  border:none;
+  background: -webkit-linear-gradient(90deg, rgb(50, 50, 50), #165594, rgb(20, 0, 120));
+  background: linear-gradient(90deg, rgb(50, 50, 50), #165594, rgb(20, 0, 120));
+  border-radius: 5%;
+  z-index:0;
+  padding:5px;
+  width: 600px;
+  height: 260px;
+  /*background: linear-gradient(0.5turn, #707f91, #0342a6, #0073ff);  */
+  padding: 10px 30px 40px;
+}
+
+.card h3 {
+  font-size: 22px;
+  font-weight: 600;
+  
+}
+
+.drop_box {
+  margin: 10px 0;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border: 3px dotted #a3a3a3;
+  border-radius: 5px;
+}
+
+.drop_box h4 {
+  font-size: 16px;
+  font-weight: 400;
+  color: #2e2e2e;
+}
+
+.drop_box p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: #a3a3a3;
+}
+
+.btn {
+  text-decoration: none;
+  background-color: #005af0;
+  color: #ffffff;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  transition: 0.3s;
+}
+
+.btn:hover{
+  text-decoration: none;
+  background-color: #ffffff;
+  color: #000aff;
+  padding: 10px 20px;
+  border: none;
+  outline: 1px solid #010101;
+}
+.form input {
+  margin: 10px 0;
+  width: 100%;
+  background-color: #e2e2e2;
+  border: none;
+  outline: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+}
+
+  </style>
+</head>
+<video style="z-index: -1;" autoplay muted loop id="myVideo">
+  <source src={{bgvurl}} type="video/mp4">
+  Tarayıcınız HTML5 desteklememektedir.
+</video>
+<div class="container">
+  <div class="card">
+    <h3 style="color:#fff">Deşifreleme için dosyalarını yükle!</h3>
+    <div class="drop_box">
+      <header>
+        <h4 style="color:#fff;">Dosyaları seç veya sürükleyip bırak.</h4>
+      </header>
+      <p style="color:#fff;">Desteklenen dosyalar: <b style="color: #fff;">.MP4 <i class="fa-regular fa-file-video"></i></b> (şifrelenmiş video), <b style="color: #fff;">.KEY <i class="fa-solid fa-key"></i></b> (anahtar dosyası)</p>
+      <input type="file" hidden accept=".mp4" id="fileID" style="display:none;">
+      <button class="btn">Video dosyası seç!</button>
+      <h1 style="color: transparent; font-size: 10px;">__</h1>
+
+    </div>
+
+  </div>
+</div>
 
 <script>
-  function getVideoFileName(myfile){
-    let filename = myfile.files[0].name;
-    document.getElementById("filenamee").textContent = "Seçtiğin video dosyası: "+ filename;
+  const dropArea = document.querySelector(".drop_box"),
+  button = dropArea.querySelector("button"),
+  dragText = dropArea.querySelector("header"),
+  input = dropArea.querySelector("input");
+let file;
+var filename;
+
+button.onclick = () => {
+  input.click();
+};
+input.addEventListener("change", function (e) {
+  
+  var fileName = e.target.files[0].name;
+  let filedata = `
+    <form action="javascript:console.log()" method="post">
+    <div class="form">
+    <h4>Video: ${fileName}</h4>
+    <input type="file" hidden accept=".key" id="fileID" style="display:none;">
+    <button onClick="loadKey()" class="btn">Anahtar dosyası seç!</button>
+    `
+    dropArea.innerHTML=filedata;
+});
+var k = new Array("Deşifreleniyor.","Deşifreleniyor..","Deşifreleniyor...")
+function defin() {
+  dropArea.innerHTML = "<div style='display: inline;justify-content: space-between;width: 450px; clear: both;' ><p style='display: inline;font-size: 25px;'>Deşifreleme Sonucu:</p> <p style='display: inline; color: #8159F4; font-size: 25px;' >ROSETTA TAŞI!!</p></div>"
+  document.getElementById('myVideo').playbackRate = 1.5
+}
+function changeda(ind) {
+  dropArea.innerHTML = k[ind]
+}
+function loadKey() {
+  var input = document.createElement('input');
+  input.type = 'file';
+  input.onchange = e => { 
+    document.getElementById('myVideo').playbackRate= 0.75
+    dropArea.innerHTML = "Deşifreleniyor"
+    for (let i=0;i<9;i++) {
+      setTimeout(() => changeda(i%3), i*1000 )
+    }
+    setTimeout(() => defin(), 12000)
+    
   }
-  function getKeyFileName(myfile){
-    let filename = myfile.files[0].name;
-    document.getElementById("keynamee").textContent =  "Seçtiğin anahtar dosyası: "+filename;
-  }
+  input.click();
+  document.getElementById('myVideo').playbackRate= 1.5
+  
+}
+
+
+
+
 </script>
-</body>
-</html>

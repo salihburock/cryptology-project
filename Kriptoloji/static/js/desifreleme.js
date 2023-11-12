@@ -1,3 +1,4 @@
+document.getElementById('myVideo').playbackRate= 1.5
 function readURL(input) {
     if (input.files && input.files[0]) {
 
