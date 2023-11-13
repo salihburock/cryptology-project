@@ -194,12 +194,13 @@ def find_shape_difference(inp):
 
 def arr2image(arr):
     fsd = find_shape_difference(arr)
+    new_array = np.array(arr)
     #s = np.random.choice(255, 3)
-    new_array = np.append(arr, list(np.random.choice(255,3))*int(fsd[0]))
+    #new_array = np.append(arr, list(np.random.choice(255,3))*int(fsd[0]))
     #new_array = np.append(arr, (244,11,255)*int(fsd[0]))
     #new_array = np.array(arr)
-    #for i in range(int(fsd[0])):
-    #    new_array = np.append(new_array, wve2rgb((exwaves[i])).flatten())
+    for i in range(int(fsd[0])):
+        new_array = np.append(new_array, arr[np.random.randint(len(arr))])
     new_array = new_array.reshape(fsd[1], fsd[1], 3)
     return new_array
 
@@ -491,6 +492,21 @@ def spkeyenc(data, vfn, kf, passwd):
     vf.write(toadd.encode())
     
 def complete_encryption(data, outvideo, keyf):
+    os.system(f'rm -rf {outvideo}')     # Deletes the file with the same name
+    morse_data = text_to_morse(data)    # Transformes the data to morse code
+    morse2wavs(morse_data)  # Saves the morse codes as audio files
+    wavs2img('dirs/wavs')   
+    resizeimgs('dirs/imgs')     # Resizes the images to same resolution
+    frames2video('dirs/imgs2', outvideo)    # Creates a video by putting the images frame by frame
+    setkey(key, keyf)  # Generates the key necessary for encryption
+    encryptkeyfile(keyf, data)  # Encrypts the key file based on Unicode 
+    print('\nEncrypted Key File:')
+    
+
+
+
+
+def complete_encryption(data, outvideo, keyf):
     print('Encryption\n')
     os.system(f'rm -rf {outvideo}')     # Deletes the file with the same name
     morse_data = text_to_morse(data)    # Transformes the data to morse code
@@ -514,6 +530,7 @@ def complete_encryption(data, outvideo, keyf):
     os.system(f'cat {keyf}')
     
     return (outvideo, open(keyf,'r').read())
+
 
 
 def tothread(n):
