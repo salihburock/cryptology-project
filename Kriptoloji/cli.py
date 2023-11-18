@@ -440,12 +440,13 @@ def setkey(key, keyf):
     ar2 = []
     for i in range(len(r)):
         ar2.append(str(str(r[i])))
+    #(ar2)
     # for i in range(len(ar2)):
         # ar2[i] = chr(int(i))
     # r = ""
     for i in ar2:
         r += i
-
+    #print(r)
     # r = encryptkey(r)
     open(keyf, 'w+').write(r)    
     return r
